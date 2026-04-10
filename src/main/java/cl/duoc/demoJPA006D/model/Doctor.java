@@ -1,0 +1,22 @@
+package cl.duoc.demoJPA006D.model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Doctor {
+
+    @Id
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
+    String name;
+    @Column(name = "last_name")
+    String lastName;
+    String email;
+    String phone;
+}
