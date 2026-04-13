@@ -5,7 +5,6 @@ import cl.duoc.demoJPA006D.service.DoctorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.print.Doc;
 import java.util.List;
 
 @RestController
@@ -13,7 +12,6 @@ import java.util.List;
 public class DoctorController {
 
     private final DoctorService service;
-
     public DoctorController(DoctorService service) {
         this.service = service;
     }
