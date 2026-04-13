@@ -20,7 +20,7 @@ public class DoctorServiceImpl implements DoctorService {
         return repository.findAll();
     }
 
-    public Doctor findById(int id){
+    public Doctor findById(Long id){
         return repository
                 .findById(id)
                 .orElse(null);
@@ -36,18 +36,20 @@ public class DoctorServiceImpl implements DoctorService {
         return repository.save(doctor);
     }
 
-    public Doctor update(int id, Doctor doctor) throws Exception {
-        boolean exists = repository.existsById(doctor.getId());
+    public Doctor update(Long id, Doctor doctor) throws Exception {
+        boolean exists = repository.existsById(id);
         if (!exists){
-            throw new Exception("Doctor with id " + doctor.getId() + " not exists");
+            throw new Exception("Doctor with id " + id + " not exists");
         }
-
+        doctor.setId(id);
         return repository.save(doctor);
     }
 
-    public boolean delete(int id){
+    public boolean delete(Long id){
         boolean exists = repository.existsById(id);
-        repository.deleteById(id);
+        if (exists) {
+            repository.deleteById(id);
+        }
         return exists;
     }
 

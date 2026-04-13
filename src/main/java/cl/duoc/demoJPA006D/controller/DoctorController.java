@@ -22,7 +22,7 @@ public class DoctorController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Doctor> findById(@PathVariable int id) {
+    public ResponseEntity<Doctor> findById(@PathVariable Long id) {
         Doctor doctor = service.findById(id);
         if (doctor == null) {
             return ResponseEntity.notFound().build();
@@ -52,7 +52,7 @@ public class DoctorController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Doctor> update(@PathVariable int id, @RequestBody Doctor doctor) {
+    public ResponseEntity<Doctor> update(@PathVariable Long id, @RequestBody Doctor doctor) {
         try {
             Doctor updated = service.update(id, doctor);
             return ResponseEntity.ok(updated);
@@ -62,7 +62,7 @@ public class DoctorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable int id) {
+    public ResponseEntity<Boolean> delete(@PathVariable Long id) {
         return ResponseEntity.ok(service.delete(id));
     }
 }

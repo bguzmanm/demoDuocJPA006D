@@ -1,12 +1,10 @@
 package cl.duoc.demoJPA006D.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -15,7 +13,8 @@ import lombok.NoArgsConstructor;
 public class Agenda {
 
     @Id
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id")
@@ -24,5 +23,5 @@ public class Agenda {
     @ManyToOne
     @JoinColumn(name = "patient_id")
     Patient patient;
-    String date;
+    LocalDateTime date;
 }

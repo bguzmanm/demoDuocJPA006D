@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface DoctorService {
     List<Doctor> findAll();
-    Doctor findById(int id);
+    Doctor findById(Long id);
     Doctor create(Doctor doctor);
-    Doctor update(int id, Doctor doctor) throws Exception;
-    boolean delete(int id);
+    Doctor update(Long id, Doctor doctor) throws Exception;
+    boolean delete(Long id);
     List<Doctor> findByName(String name);
     public List<Doctor> findByNameAndLastName(String name, String lastName);
 }

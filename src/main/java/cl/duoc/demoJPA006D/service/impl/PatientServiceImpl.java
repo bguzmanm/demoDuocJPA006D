@@ -26,7 +26,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public PatientDto findById(int id) {
+    public PatientDto findById(Long id) {
         return mapper.toPatientDto(repository.findById(id).orElse(null));
     }
 
@@ -45,7 +45,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public boolean delete(int id) {
+    public boolean delete(Long id) {
         Patient patient = repository.findById(id).orElse(null);
         if (patient != null) {
             repository.deleteById(id);
