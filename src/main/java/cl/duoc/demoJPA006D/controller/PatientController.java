@@ -5,9 +5,7 @@ import cl.duoc.demoJPA006D.model.Doctor;
 import cl.duoc.demoJPA006D.model.Patient;
 import cl.duoc.demoJPA006D.service.PatientService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.function.EntityResponse;
 
 import java.util.List;
@@ -26,5 +24,10 @@ public class PatientController {
     public ResponseEntity<List<PatientDto>> findAll()
     {
         return ResponseEntity.ok(service.findAll());
+    }
+
+    @PostMapping
+    public ResponseEntity<PatientDto> create(@RequestBody PatientDto patientDto) {
+        return ResponseEntity.ok(service.create(patientDto));
     }
 }

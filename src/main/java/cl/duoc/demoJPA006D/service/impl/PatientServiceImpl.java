@@ -7,7 +7,6 @@ import cl.duoc.demoJPA006D.repository.PatientRepository;
 import cl.duoc.demoJPA006D.service.PatientService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,30 +21,38 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public List<PatientDto> findAll() {
-        return mapper.toPatientDtos(repository.findAll());
+        return mapper.toPatientList(
+                repository.findAll()
+        );
     }
 
     @Override
-    public PatientDto findById(Long id) {
-        return mapper.toPatientDto(repository.findById(id).orElse(null));
+    public PatientDto findById(int id) {
+        return mapper.toPatientDto(
+                repository.findById(id).orElse(null)
+        );
     }
 
     @Override
     public PatientDto create(PatientDto patient) {
         return mapper.toPatientDto(
-                repository.save(mapper.toPatient(patient))
+                repository.save(
+                        mapper.toPatient(patient)
+                )
         );
     }
 
     @Override
     public PatientDto update(PatientDto patient) {
         return mapper.toPatientDto(
-                repository.save(mapper.toPatient(patient))
+                repository.save(
+                        mapper.toPatient(patient)
+                )
         );
     }
 
     @Override
-    public boolean delete(Long id) {
+    public boolean delete(int id) {
         Patient patient = repository.findById(id).orElse(null);
         if (patient != null) {
             repository.deleteById(id);
